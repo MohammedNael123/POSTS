@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Vue CRUD App</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Posts List</h1>
+        <div class="create-post-button">
+            <button @click="openCreateModal">Create Post</button>
+        </div>
+        <ul>
+            <li v-for="post in posts" :key="post.id">
+                <div class="post-header">
+                    <div>
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.time }}</p>
+                    </div>
+                    <div>
+                        <button @click="deletePost(post.id)">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 6L17.1991 18.0129C17.129 19.065 17.0939 19.5911 16.8667 19.99C16.6666 20.3412 16.3648 20.6235 16.0011 20.7998C15.588 21 15.0607 21 14.0062 21H9.99377C8.93927 21 8.41202 21 7.99889 20.7998C7.63517 20.6235 7.33339 20.3412 7.13332 19.99C6.90607 19.5911 6.871 19.065 6.80086 18.0129L6 6M4 6H20M16 6L15.7294 5.18807C15.4671 4.40125 15.3359 4.00784 15.0927 3.71698C14.8779 3.46013 14.6021 3.26132 14.2905 3.13878C13.9376 3 13.523 3 12.6936 3H11.3064C10.477 3 10.0624 3 9.70951 3.13878C9.39792 3.26132 9.12208 3.46013 8.90729 3.71698C8.66405 4.00784 8.53292 4.40125 8.27064 5.18807L8 6M14 10V17M10 10V17" stroke="#d32e0d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <button @click="showEditModal(post)">
+                            <svg fill="#000000" width="24px" height="24px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.681 18.207l-2.209 5.67 5.572-2.307-3.363-3.363zM26.855 6.097l-0.707-0.707c-0.78-0.781-2.047-0.781-2.828 0l-1.414 1.414 3.535 3.536 1.414-1.414c0.782-0.781 0.782-2.048 0-2.829zM10.793 17.918l0.506-0.506 3.535 3.535 9.9-9.9-3.535-3.535 0.707-0.708-11.113 11.114zM23.004 26.004l-17.026 0.006 0.003-17.026 11.921-0.004 1.868-1.98h-14.805c-0.552 0-1 0.447-1 1v19c0 0.553 0.448 1 1 1h19c0.553 0 1-0.447 1-1v-14.058l-2.015 1.977 0.054 11.085z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p id="description">{{ post.description }}</p>
+                <h6>Timer: {{ post.timer }}</h6>
+            </li>
+        </ul>
+
+        <div class="modal-overlay" v-if="showModal">
+            <div class="modal">
+                <div class="pop-up-header">
+                    <h1>{{ editing ? 'Edit Post' : 'Create Post' }}</h1>
+                    <span class="close" @click="closeModal"><svg fill="#000000" width="32px" height="32px" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z"></path></svg></span>
+                </div>
+                <form @submit.prevent="savePost">
+                    <label for="edit-title">Title:</label><br>
+                    <input type="text" id="edit-title" v-model="formData.title" required><br><br>
+                
+                    <label for="edit-description">Description:</label><br>
+                    <textarea id="edit-description" v-model="formData.description" rows="4" required></textarea><br><br>
+                
+                    <label for="edit-timer">Timer:</label><br>
+                    <input type="text" id="edit-timer" v-model="formData.timer" readonly><br><br>
+                
+                    <button type="button" @click="startTimer" v-if="!timer">Start Timer</button>
+                    <button type="button" @click="stopTimer" v-if="timer">Stop Timer</button><br><br>
+                
+                    <button type="submit">{{ editing ? 'Save Changes' : 'Create Post' }}</button>
+                </form>
+            </div>
+        </div>
+        <h6>@Mohammed Nael</h6>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

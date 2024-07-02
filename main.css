@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,500&display=swap');
+body {
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    margin: 20px;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.create-post-button button ,
+.modal button {
+    padding: 10px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+    background-color: #00FF7F;
+    transition: 0.2s ease-in-out;
+}
+.create-post-button button:hover ,
+.modal button:hover {
+    background-color: #15ed81;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    align-items: center;
+    padding: 0;
+}
+
+li {
+    background-color: #ffffff;
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    width: 400px;
+    max-width: 400px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    position: relative; 
+}
+
+.post-header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post-header svg {
+    cursor: pointer;
+}
+
+.post-header h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.post-header p {
+    font-size: 14px;
+    color: #666; 
+}
+
+#description {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+
+li button {
+    margin-left: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal input[type="text"],
+.modal textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    resize: none; 
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1010;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #aaa;
+}
+
+.modal h1 {
+    margin-bottom: 20px;
+}
+#edit-title ,
+#edit-description {
+    width: 95%;
+    height: 25px;
+    border-radius: 3px;
+    border: solid 1px black;
+}
+#edit-description {
+    height: 100px;
+    resize: none;
+}
+.modal form {
+    margin-bottom: 0;
+}
+.pop-up-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+.modal button {
+   width: 100%;
+}
+
+@media (max-width: 768px) {
+    li {
+        width: 100%;
+    }
+}
